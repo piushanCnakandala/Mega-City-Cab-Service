@@ -20,6 +20,10 @@ public class AdminUserServlet extends HttpServlet {
 
     private AdminUserService adminUserService;
 
+    public AdminUserServlet() {
+        super();
+    }
+
     public AdminUserServlet(AdminUserService adminUserService) {
         this.adminUserService = adminUserService;
     }
@@ -46,6 +50,11 @@ public class AdminUserServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("index.jsp");
+    }
+
     private void handleAddAdminUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
         String nic = request.getParameter("nic");
@@ -63,9 +72,9 @@ public class AdminUserServlet extends HttpServlet {
 
         try {
             adminUserService.addAdminUser(adminUser);
-            response.sendRedirect("cars?success=1");
+            response.sendRedirect("admin?success=1");
         } catch (IOException e) {
-            response.sendRedirect("cars?error=1");
+            response.sendRedirect("admin?error=1");
         }
     }
 
