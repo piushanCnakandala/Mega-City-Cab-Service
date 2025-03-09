@@ -1,8 +1,11 @@
 package com.example.megacitycabservice.controller;
 
 import com.example.megacitycabservice.dao.AdminUserDAO;
+import com.example.megacitycabservice.dao.CustomerUserDAO;
 import com.example.megacitycabservice.model.AdminUser;
+import com.example.megacitycabservice.model.CustomerUser;
 import com.example.megacitycabservice.service.AdminUserService;
+import com.example.megacitycabservice.service.CustomerUserService;
 import com.example.megacitycabservice.util.DBConnection;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
@@ -15,24 +18,23 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet("/admin")
-public class AdminUserServlet extends HttpServlet {
+@WebServlet("/customer")
+public class CustomerUserServlet extends HttpServlet {
+   private CustomerUserService customerUserService;
 
-    private AdminUserService adminUserService;
-
-    public AdminUserServlet() {
+    public CustomerUserServlet() {
         super();
     }
 
-    public AdminUserServlet(AdminUserService adminUserService) {
-        this.adminUserService = adminUserService;
-    }
+   public CustomerUserServlet(CustomerUserService customerUserService) {
+       this.customerUserService = customerUserService;
 
+   }
     @Override
     public void init(ServletConfig config) throws ServletException {
         try {
             Connection connection = DBConnection.getConnection();
-            adminUserService = new AdminUserService(new AdminUserDAO(connection));
+            customerUserService = new CustomerUserService(new CustomerUserDAO(connection));
         } catch (SQLException e) {
             throw new ServletException("Unable to connect to database", e);
         }
@@ -44,38 +46,38 @@ public class AdminUserServlet extends HttpServlet {
         String action = request.getParameter("action"); // Determine the action (add, update, delete)
 
         if ("add".equals(action)) {
-            handleAddAdminUser(request, response);
+            handleAddCustomerUser(request, response);
         } else {
-            response.sendRedirect("admin.jsp?error=1");
+            response.sendRedirect("customer.jsp?error=1");
         }
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("adminlogin.jsp");
+        response.sendRedirect("customerlogin.jsp");
     }
 
-    private void handleAddAdminUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void handleAddCustomerUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
         String nic = request.getParameter("nic");
         String mobileNumber = request.getParameter("mobileNumber");
+        String address = request.getParameter("address");
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 
-        AdminUser adminUser = new AdminUser();
-        adminUser.setName(name);
-        adminUser.setNic(nic);
-        adminUser.setMobileNumber(mobileNumber);
-        adminUser.setUserName(userName);
-        adminUser.setPassword(password);
+       CustomerUser customerUser = new CustomerUser();
+        customerUser.setName(name);
+        customerUser.setNic(nic);
+        customerUser.setMobileNumber(mobileNumber);
+        customerUser.setUserName(userName);
+        customerUser.setAddress(address);
+        customerUser.setPassword(password);
 
 
         try {
-            adminUserService.addAdminUser(adminUser);
-            response.sendRedirect("admin?success=1");
+            customerUserService.addCustomerUser(customerUser);
+            response.sendRedirect("customer?success=1");
         } catch (IOException e) {
-            response.sendRedirect("admin?error=1");
+            response.sendRedirect("customer?error=1");
         }
     }
-
 }

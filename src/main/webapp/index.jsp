@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Mega City Cab</title>
+  <title>Welcome - Mega City Cab</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
     body {
       background: linear-gradient(to right, #2c3e50, #3498db);
@@ -16,124 +17,63 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    .login-container {
+    .landing-container {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       text-align: center;
-      max-width: 400px;
+      max-width: 500px;
       width: 100%;
       color: white;
     }
 
-    .login-container h2 {
-      margin-bottom: 10px;
+    .landing-container h1 {
+      font-size: 28px;
       font-weight: 600;
-    }
-
-    .login-container p {
-      font-size: 14px;
       margin-bottom: 20px;
     }
 
-    .form-control {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      padding: 12px;
-      border-radius: 25px;
-      outline: none;
+    .user-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
     }
 
-    .form-control::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .form-control:focus {
-      background: rgba(255, 255, 255, 0.3);
-      box-shadow: none;
-    }
-
-    .input-group-text {
-      background: transparent;
-      border: none;
-      color: white;
-    }
-
-    .btn-login {
-      width: 100%;
-      padding: 12px;
-      border-radius: 25px;
-      background-color: #27ae60;
-      color: white;
-      font-weight: 600;
-      border: none;
-      transition: all 0.3s ease;
-    }
-
-    .btn-login:hover {
-      background-color: #2ecc71;
-    }
-
-    .register-link {
-      margin-top: 15px;
-      font-size: 14px;
-    }
-
-    .register-link a {
-      color: #f1c40f;
-      font-weight: 500;
+    .user-options a {
       text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 12px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .register-link a:hover {
-      text-decoration: underline;
+    .user-options a:hover {
+      background: rgba(255, 255, 255, 0.3);
     }
   </style>
 </head>
 <body>
 
-<div class="login-container">
-  <h2>Welcome Back</h2>
-  <p>Login to your Mega City Cab account</p>
-
-  <form action="login" method="post">
-    <div class="mb-3 input-group">
-      <span class="input-group-text"><i class="fas fa-user"></i></span>
-      <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-    </div>
-
-    <div class="mb-3 input-group">
-      <span class="input-group-text"><i class="fas fa-lock"></i></span>
-      <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-    </div>
-
-    <button type="submit" class="btn btn-login">Login</button>
-  </form>
-
-  <p class="register-link">Don't have an account? <a href="registation.jsp">Register here</a></p>
+<div class="landing-container">
+  <h1>Welcome to Mega City Cab</h1>
+  <p>Select your role to continue:</p>
+  <div class="user-options">
+    <a href="adminlogin.jsp"><i class="fas fa-user-shield"></i> Admin</a>
+    <a href="customerlogin.jsp"><i class="fas fa-user"></i> Customer</a>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const error = urlParams.get('error');
-  const success = urlParams.get('success');
-
-  if (error === '1') {
-    alert("Login failed. Please check your credentials.");
-  }
-
-  if (success === '1') {
-    alert("Login successful! Redirecting...");
-    setTimeout(() => {
-      window.location.href = 'dashboard.jsp';
-    }, 2000);
-  }
-</script>
 
 </body>
 </html>
