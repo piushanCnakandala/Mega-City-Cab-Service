@@ -52,7 +52,7 @@ public class AdminUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("adminlogin.jsp");
     }
 
     private void handleAddAdminUser(HttpServletRequest request, HttpServletResponse response) throws IOException {

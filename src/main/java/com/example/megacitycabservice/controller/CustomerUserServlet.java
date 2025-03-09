@@ -22,6 +22,10 @@ import java.sql.SQLException;
 public class CustomerUserServlet extends HttpServlet {
    private CustomerUserService customerUserService;
 
+    public CustomerUserServlet() {
+        super();
+    }
+
    public CustomerUserServlet(CustomerUserService customerUserService) {
        this.customerUserService = customerUserService;
 
@@ -49,7 +53,7 @@ public class CustomerUserServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("customerlogin.jsp");
     }
 
     private void handleAddCustomerUser(HttpServletRequest request, HttpServletResponse response) throws IOException {

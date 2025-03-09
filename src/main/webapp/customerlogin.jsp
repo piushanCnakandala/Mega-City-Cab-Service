@@ -113,7 +113,7 @@
     <button type="submit" class="btn btn-login">Login</button>
   </form>
 
-  <p class="register-link">Don't have an account? <a href="registation.jsp">Register here</a></p>
+  <p class="register-link">Don't have an account? <a href="customerregistation.jsp">Register here</a></p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
