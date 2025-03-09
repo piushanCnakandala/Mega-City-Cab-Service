@@ -91,7 +91,7 @@
         <a href="customers"><i class="fas fa-users"></i> Manage Customers</a>
         <a href="bookings"><i class="fas fa-calendar-check"></i> Manage Bookings</a>
         <a href="drivers"><i class="fas fa-id-badge"></i> Manage Drivers</a>
-        <a href="cars"><i class="fas fa-car"></i> Manage Cars</a>
+        <a href="cars.jsp"><i class="fas fa-car"></i> Manage Cars</a>
     </div>
 </div>
 
