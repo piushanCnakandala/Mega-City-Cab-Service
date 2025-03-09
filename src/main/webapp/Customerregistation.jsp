@@ -99,7 +99,7 @@
     <h2>Admin Registration</h2>
     <p>Join Mega City Cab Service</p>
 
-    <form action="admin" method="post">
+    <form action="customer" method="post">
         <input type="hidden" name="action" value="add">
 
         <div class="mb-3 input-group">
@@ -118,6 +118,11 @@
         </div>
 
         <div class="mb-3 input-group">
+            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+        </div>
+
+        <div class="mb-3 input-group">
             <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
             <input type="text" class="form-control" id="username" name="userName" placeholder="Username" required>
         </div>
@@ -130,7 +135,7 @@
         <button type="submit" class="btn btn-register">Register</button>
     </form>
 
-    <p class="login-link">Already have an account? <a href="adminlogin.jsp">Login here</a></p>
+    <p class="login-link">Already have an account? <a href="customerlogin.jsp">Login here</a></p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -147,7 +152,7 @@
     if (success === '1') {
         alert("Registration successful! Redirecting...");
         setTimeout(() => {
-            window.location.href = 'adminlogin.jsp';
+            window.location.href = 'customerlogin.jsp';
         }, 2000);
     }
 </script>
