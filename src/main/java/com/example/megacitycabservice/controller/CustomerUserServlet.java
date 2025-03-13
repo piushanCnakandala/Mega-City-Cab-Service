@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet("/customer")
 public class CustomerUserServlet extends HttpServlet {
@@ -48,12 +49,21 @@ public class CustomerUserServlet extends HttpServlet {
         if ("add".equals(action)) {
             handleAddCustomerUser(request, response);
         } else {
-            response.sendRedirect("customer.jsp?error=1");
+            response.sendRedirect("customers.jsp?error=1");
         }
     }
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("customerlogin.jsp");
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            List<CustomerUser> customers = customerUserService.getAllCustomers();
+            request.setAttribute("customer", customers);
+            request.getRequestDispatcher("customers.jsp").forward(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.sendRedirect("customers.jsp?error=1");
+        }
     }
 
     private void handleAddCustomerUser(HttpServletRequest request, HttpServletResponse response) throws IOException {

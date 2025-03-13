@@ -112,7 +112,7 @@
             <tbody>
             <c:forEach var="car" items="${cars}">
             <tr>
-                <td>${car.carId}</td>
+                <td>${car.id}</td>
                 <td>${car.model}</td>
                 <td>${car.type}</td>
                 <td>${car.year}</td>
@@ -122,19 +122,19 @@
                 <td>${car.advancePrice}</td>
                 <td>${car.status}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateCarModal${car.carId}">
+                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateCarModal${car.id}">
                         <i class="bi bi-pencil-square"></i>
                     </button>
-                    <form action="car" method="post" class="d-inline">
+                    <form action="cars" method="post" class="d-inline">
                         <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="carId" value="${car.carId}">
+                        <input type="hidden" name="carId" value="${car.id}">
                         <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>
 
             <!-- Update Modal -->
-            <div class="modal fade" id="updateCarModal${car.carId}" tabindex="-1">
+            <div class="modal fade" id="updateCarModal${car.id}" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -142,12 +142,24 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="car" method="post">
+                            <form action="cars" method="post">
                                 <input type="hidden" name="action" value="update">
-                                <input type="hidden" name="carId" value="${car.carId}">
+                                <input type="hidden" name="carId" value="${car.id}">
                                 <div class="mb-3">
                                     <label class="form-label">Model</label>
                                     <input type="text" name="model" class="form-control" value="${car.model}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Type</label>
+                                    <input type="text" name="type" class="form-control" value="${car.type}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Year</label>
+                                    <input type="text" name="year" class="form-control" value="${car.year}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Passenger Count</label>
+                                    <input type="text" name="passengerCount" class="form-control" value="${car.passengerCount}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">License Plate</label>
@@ -156,6 +168,14 @@
                                 <div class="mb-3">
                                     <label class="form-label">Price/km</label>
                                     <input type="text" name="perKilometerPrice" class="form-control" value="${car.perKilometerPrice}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Advance Price</label>
+                                    <input type="text" name="advancePrice" class="form-control" value="${car.advancePrice}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Status</label>
+                                    <input type="text" name="status" class="form-control" value="${car.status}" required>
                                 </div>
                                 <button type="submit" class="btn btn-success w-100">Update Car</button>
                             </form>
@@ -178,7 +198,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form action="car" method="post">
+                <form action="cars" method="post">
                     <input type="hidden" name="action" value="add">
                     <div class="mb-3">
                         <label class="form-label">Model</label>
