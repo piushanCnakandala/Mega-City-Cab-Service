@@ -18,7 +18,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/car")
+@WebServlet("/cars")
 public class CarServlet extends HttpServlet {
     private  CarService carService;
     public CarServlet(CarService carService) {
@@ -60,7 +60,7 @@ public class CarServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             List<Car> cars = carService.getAllCars();
-            request.setAttribute("car", cars);
+            request.setAttribute("cars", cars);
             request.getRequestDispatcher("cars.jsp").forward(request, response);
         } catch (SQLException e) {
             response.sendRedirect("cars.jsp?error=1");
