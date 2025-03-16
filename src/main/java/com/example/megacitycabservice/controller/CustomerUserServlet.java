@@ -34,7 +34,8 @@ public class CustomerUserServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         try {
-            Connection connection = DBConnection.getConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
+            Connection connection = dbConnection.getConnection();
             customerUserService = new CustomerUserService(new CustomerUserDAO(connection));
         } catch (SQLException e) {
             throw new ServletException("Unable to connect to database", e);
@@ -58,7 +59,7 @@ public class CustomerUserServlet extends HttpServlet {
 
         try {
             List<CustomerUser> customers = customerUserService.getAllCustomers();
-            request.setAttribute("customer", customers);
+            request.setAttribute("customers", customers);
             request.getRequestDispatcher("customers.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();

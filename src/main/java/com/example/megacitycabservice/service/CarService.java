@@ -19,11 +19,22 @@ public class CarService {
         return carDAO.getAllCars();
     }
 
+    public List<Car> getAllCarsWhereStatus(String status) throws SQLException {
+        return carDAO.getAllCarsWhereStatus(status);
+    }
+
     public void updateCar(Car car) throws SQLException {
         carDAO.updateCar(car);
     }
 
     public void deleteCar(int id) throws SQLException {
         carDAO.deleteCar(id);
+    }
+
+    public Car getCarById(int carId)throws SQLException {
+        return carDAO.getCarById(carId);
+    }
+    public void updateCarStatus(int carId, String status) throws SQLException {
+        carDAO.updateCarStatus(carId, status);
     }
 }

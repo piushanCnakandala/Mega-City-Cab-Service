@@ -96,7 +96,7 @@
 <body>
 
 <div class="register-container">
-    <h2>Admin Registration</h2>
+    <h2>Customer Registration</h2>
     <p>Join Mega City Cab Service</p>
 
     <form action="customer" method="post">

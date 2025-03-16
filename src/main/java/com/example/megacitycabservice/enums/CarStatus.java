@@ -1,7 +1,7 @@
 package com.example.megacitycabservice.enums;
 
-public enum UserStatus {
+public enum CarStatus {
     AVAILABLE,
     ACTIVE,
-    BOOKED,
+    BOOKED
 }

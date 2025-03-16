@@ -27,7 +27,8 @@ public class DriverServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            Connection connection = DBConnection.getConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
+            Connection connection = dbConnection.getConnection();
             driverService = new DriverService(new DriverDAO(connection));
         } catch (SQLException e) {
             throw new ServletException("Unable to connect to database", e);

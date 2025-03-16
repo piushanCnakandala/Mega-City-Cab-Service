@@ -22,6 +22,9 @@ public class CustomerUser {
         this.password = password;
     }
 
+    public CustomerUser(int registrationNumber) {
+    }
+
     public int getRegistrationNumber() {
         return registrationNumber;
     }

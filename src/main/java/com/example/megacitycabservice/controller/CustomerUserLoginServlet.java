@@ -23,7 +23,8 @@ public class CustomerUserLoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            Connection connection = DBConnection.getConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
+            Connection connection = dbConnection.getConnection();
             customerUserDAO = new CustomerUserDAO(connection);
         } catch (SQLException e) {
             throw new ServletException("Unable to connect to database", e);

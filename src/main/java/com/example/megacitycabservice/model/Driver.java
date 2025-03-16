@@ -20,6 +20,9 @@ public class Driver {
 
     }
 
+    public Driver(int driverId) {
+    }
+
     public int getDriverId() {
         return driverId;
     }

@@ -27,6 +27,10 @@ public class Car {
         this.status = status;
 
     }
+
+    public Car(int carId) {
+    }
+
     public int getId() {
         return id;
     }
