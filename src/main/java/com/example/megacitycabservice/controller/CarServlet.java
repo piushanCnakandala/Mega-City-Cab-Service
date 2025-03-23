@@ -32,7 +32,8 @@ public class CarServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         try {
-            Connection connection = DBConnection.getConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
+            Connection connection = dbConnection.getConnection();
             carService = new CarService(new CarDAO(connection));
         } catch (SQLException e) {
             throw new ServletException("Unable to connect to database", e);

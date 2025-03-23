@@ -31,7 +31,8 @@ public class AdminUserServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         try {
-            Connection connection = DBConnection.getConnection();
+            DBConnection dbConnection = DBConnection.getInstance();
+            Connection connection = dbConnection.getConnection();
             adminUserService = new AdminUserService(new AdminUserDAO(connection));
         } catch (SQLException e) {
             throw new ServletException("Unable to connect to database", e);

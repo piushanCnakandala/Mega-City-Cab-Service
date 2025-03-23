@@ -101,7 +101,7 @@ public class CustomerUserDAO {
                     customer.setRegistrationNumber(rs.getInt("registration_number"));
                     customer.setName(rs.getString("name"));
                     customer.setNic(rs.getString("nic"));
-                    customer.setMobileNumber(rs.getString("mobileNumber"));
+                    customer.setMobileNumber(rs.getString("mobile_number"));
                     customer.setAddress(rs.getString("address"));
 
                     return customer;

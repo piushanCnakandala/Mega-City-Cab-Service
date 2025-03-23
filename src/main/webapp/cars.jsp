@@ -127,67 +127,72 @@
                     </button>
                     <form action="cars" method="post" class="d-inline">
                         <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="carId" value="${car.id}">
+                        <input type="hidden" name="id" value="${car.id}">
                         <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>
 
-            <!-- Update Modal -->
-            <div class="modal fade" id="updateCarModal${car.id}" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Update Car</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="cars" method="post">
-                                <input type="hidden" name="action" value="update">
-                                <input type="hidden" name="carId" value="${car.id}">
-                                <div class="mb-3">
-                                    <label class="form-label">Model</label>
-                                    <input type="text" name="model" class="form-control" value="${car.model}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Type</label>
-                                    <input type="text" name="type" class="form-control" value="${car.type}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Year</label>
-                                    <input type="text" name="year" class="form-control" value="${car.year}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Passenger Count</label>
-                                    <input type="text" name="passengerCount" class="form-control" value="${car.passengerCount}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">License Plate</label>
-                                    <input type="text" name="licensePlate" class="form-control" value="${car.licensePlate}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Price/km</label>
-                                    <input type="text" name="perKilometerPrice" class="form-control" value="${car.perKilometerPrice}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Advance Price</label>
-                                    <input type="text" name="advancePrice" class="form-control" value="${car.advancePrice}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Status</label>
-                                    <input type="text" name="status" class="form-control" value="${car.status}" required>
-                                </div>
-                                <button type="submit" class="btn btn-success w-100">Update Car</button>
-                            </form>
+                <!-- Update Modal -->
+                <div class="modal fade" id="updateCarModal${car.id}" tabindex="-1"
+                     aria-labelledby="updateCarModalLabel${car.id}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Update Car</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="cars" method="post">
+                                    <input type="hidden" name="action" value="update">
+                                    <input type="hidden" name="carId" value="${car.id}">
+                                    <div class="mb-3">
+                                        <label class="form-label">Model</label>
+                                        <input type="text" name="model" class="form-control" value="${car.model}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Type</label>
+                                        <input type="text" name="type" class="form-control" value="${car.type}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Year</label>
+                                        <input type="number" name="year" class="form-control" value="${car.year}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Passenger Count</label>
+                                        <input type="number" name="passengerCount" class="form-control" value="${car.passengerCount}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">License Plate</label>
+                                        <input type="text" name="licensePlate" class="form-control" value="${car.licensePlate}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Price/km</label>
+                                        <input type="number" name="perKilometerPrice" class="form-control" value="${car.perKilometerPrice}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Advance Price</label>
+                                        <input type="number" name="advancePrice" class="form-control" value="${car.advancePrice}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Status</label>
+                                        <input type="text" name="status" class="form-control" value="${car.status}" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">Update Car</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
             </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
+
+
+
 
 <!-- Add Car Modal -->
 <div class="modal fade" id="addCarModal" tabindex="-1">
@@ -231,8 +236,8 @@
                     <div class="mb-3">
                         <label class="form-label">Status</label>
                         <select class="form-control" name="status" required>
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+                            <option value="AVAILABLE">AVAILABLE</option>
+                            <option value="UNAVAILABLE">UNAVAILABLE</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-secondary w-100">Add Car</button>
@@ -248,8 +253,38 @@
             document.getElementById('successAlert').classList.remove('d-none');
         }
     };
+
+    // Add modal debugging/initialization
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-bs-target').substring(1);
+            const modalElement = document.getElementById(targetId);
+
+            if (modalElement) {
+                const modalInstance = new bootstrap.Modal(modalElement);
+                modalInstance.show();
+            } else {
+                console.error('Modal not found:', targetId);
+            }
+        });
+    });
+
+    function removeModalBackdrops() {
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+        document.body.style.removeProperty('padding-right');
+    }
+
+    // Example usage
+    document.addEventListener('hidden.bs.modal', removeModalBackdrops);
+
+    // Ensure that modal backdrop elements are removed when modals are hidden
+    document.addEventListener('hidden.bs.modal', function () {
+        document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+    });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
